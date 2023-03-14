@@ -1,6 +1,6 @@
 <<<<<<< HEAD
 # MKSpace
-A space for sharing everythins
+A space for sharing everythings
 =======
 # hahah
 
