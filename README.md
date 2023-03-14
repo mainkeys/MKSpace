@@ -2,7 +2,6 @@
 # MKSpace
 A space for sharing everythings
 =======
-# hahah
 
 ## Project setup
 ```
