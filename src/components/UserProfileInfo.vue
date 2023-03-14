@@ -1,28 +1,25 @@
 <template>
-    <div class="user-card">
-        <div class="info-bg">
-            <img src="../assets/3.jpg" alt="">
-        </div>
-        <img class="avatar" src="../assets/logo2.png" alt="">
-        <div class="user-info">
-            <div class="id-info">
-                <a class="id" href="">{{ fullName }}</a>
-                <img class="sex"
-                    src="https://s1.hdslb.com/bfs/seed/jinkela/commentpc/static/img/ic_tag_man_border.89ca61d.png@.webp"
-                    alt="">
+    <div class="container">
+        <div class="user-card">
+            <div class="info-bg">
+                <img src="../assets/3.jpg" alt="">
             </div>
-            <span>11</span><span class="gray-text">关注</span>
-            <span>{{ user.followerCount }}</span><span class="gray-text">粉丝</span>
-            <span>88.7万</span><span class="gray-text">获赞</span>
-            <div class="btn-box">
-                <button @click="follow" v-if="!user.is_followed">+关注</button>
-                <button @click="unfollow" v-if="user.is_followed">取消关注</button>
+            <img class="avatar" src="../assets/logo2.png" alt="">
+            <div class="user-info">
+                <div class="id-info">
+                    <a class="id" href="">{{ fullName }}</a>
+                    <img class="sex"
+                        src="https://s1.hdslb.com/bfs/seed/jinkela/commentpc/static/img/ic_tag_man_border.89ca61d.png@.webp"
+                        alt="">
+                </div>
+                <span>11</span><span class="gray-text"> following</span>
+                <span>{{ user.followerCount }}</span><span class="gray-text"> fans</span>
+                <span>88.7w</span><span class="gray-text"> likes</span>
 
             </div>
+            <button class="btn-box" @click="follow" v-if="!user.is_followed">+ Follow</button>
+            <button class="btn-box" @click="unfollow" v-if="user.is_followed">Unfollow</button>
         </div>
-
-
-
     </div>
 </template>
 
@@ -84,17 +81,21 @@ export default {
 
 }
 
-.btn-box {
-    width: 100%;
-    height: 44px;
+.user-card .btn-box {
+    width: 22%;
+    height: 11%;
     /* position: relative; */
-    top: 15px;
-    left: 80px;
+    background-color: #f2f7de;
+    border-color: lightgray;
+    border-radius: 5px;
+    border: #6D757A solid 1px;
+    color: #41525c;
+    margin-top: 10px;
 }
 
 .user-info {
-    width: 80%;
-    padding: 10px 20px 16px 70px;
+    margin-top: 15px;
+    width: 85%;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -110,12 +111,17 @@ export default {
     line-height: 13px;
 }
 
+.id-info .sex {
+    position: relative;
+    left: 30px;
+    top: 4px;
+}
+
 .user-card .avatar {
     width: 48px;
     height: 48px;
     border-radius: 50%;
     margin-top: 10px;
-    margin-left: 10px;
     float: left;
 }
 
@@ -129,29 +135,35 @@ export default {
     color: #FB7299;
     display: block;
     float: left;
+    position: relative;
+    left: 60px;
+    top: 5px;
 }
+
+
+
 
 .gray-text {
     color: #9499A0;
-    margin-right: 20px;
+    margin-right: 8px;
 }
 
-.btn-box>button {
+/* .btn-box>button {
     margin: 20px 100px 0px -20px;
     width: 100px;
     height: 28px;
     border-radius: 5px;
     border: #6D757A solid 1px;
     position: relative;
-}
+} */
 
 button:hover {
     box-shadow: 1px 1px 1px rgb(223, 240, 212);
 }
 
-.btn-box>button:nth-child(1) {
-    background-color: #f2f7de;
-    border-color: lightgray;
+button {
+    font: "Times New Roman";
+    font-size: 13px;
 }
 </style>
 
