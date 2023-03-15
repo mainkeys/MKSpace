@@ -45,7 +45,6 @@ export default {
         });
 
         const open_user_profile = userId => {
-            console.log(store.state.user.is_login);
             if (store.state.user.is_login) {
                 router.push({
                     name: "userprofile",

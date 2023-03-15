@@ -4,17 +4,15 @@
             <div class="info-bg">
                 <img src="../assets/3.jpg" alt="">
             </div>
-            <img class="avatar" src="../assets/logo2.png" alt="">
             <div class="user-info">
+                <img class="avatar" :src="user.photo" alt="">
                 <div class="id-info">
-                    <a class="id" href="">{{ fullName }}</a>
-                    <img class="sex"
-                        src="https://s1.hdslb.com/bfs/seed/jinkela/commentpc/static/img/ic_tag_man_border.89ca61d.png@.webp"
-                        alt="">
+                    <div style="margin: auto; width: 100px; height: 40px; color: aqua; font-size: 12px;">
+                        {{ user.username }}
+                    </div>
                 </div>
                 <span>11</span><span class="gray-text"> following</span>
                 <span>{{ user.followerCount }}</span><span class="gray-text"> fans</span>
-                <span>88.7w</span><span class="gray-text"> likes</span>
 
             </div>
             <button class="btn-box" @click="follow" v-if="!user.is_followed">Follow</button>
@@ -27,7 +25,6 @@
 
 
 <script>
-import { computed } from 'vue';
 export default {
     name: "UserProfileInfo",
     props: {
@@ -38,7 +35,6 @@ export default {
 
     },
     setup(props, context) {
-        let fullName = computed(() => props.user.lastName + ' ' + props.user.firstName);
         const follow = () => {
             context.emit('follow123');
         };
@@ -46,9 +42,7 @@ export default {
             context.emit('unfollow123');
         };
 
-
         return {
-            fullName,
             follow,
             unfollow,
         }
@@ -82,7 +76,7 @@ export default {
 }
 
 .user-card .btn-box {
-    width: 22%;
+    width: 30%;
     height: 11%;
     /* position: relative; */
     background-color: #f6f8ec;
@@ -127,17 +121,6 @@ export default {
 
 .user-info>span {
     font-size: 12px;
-}
-
-.user-info a {
-    font-weight: bold;
-    text-decoration: none;
-    color: #FB7299;
-    display: block;
-    float: left;
-    position: relative;
-    left: 60px;
-    top: 5px;
 }
 
 

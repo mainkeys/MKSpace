@@ -17,9 +17,13 @@ import ContentBase from '../components/ContentBase';
 import UserProfileInfo from '../components/UserProfileInfo';
 import UserProfilePosts from '../components/UserProfilePosts';
 import UserProfileWrite from '../components/UserProfileWrite'
+import $ from 'jquery'
+import { useStore } from 'vuex';
+
 
 import { reactive } from 'vue'
 import { useRoute } from 'vue-router'
+import { computed } from 'vuex';
 // @ is an alias to /src
 
 export default {
@@ -32,38 +36,44 @@ export default {
     },
     // ref比reactive慢， ref能赋值
     setup() {
+        const store = useStore();
         const route = useRoute();
-        console.log(route.params.userId);
+        const userId = parseInt(route.params.userId);
+        const user = reactive({});
+        const posts = reactive({});
 
+        $.ajax({
 
-        const user = reactive({
-            id: 1,
-            userName: "Mainkeys",
-            lastName: "Main",
-            firstName: "keys",
-            followerCount: 0,
-            is_followed: false,
+            url: "https://app165.acapp.acwing.com.cn/myspace/getinfo/",
+            type: "GET",
+            data: {
+                user_id: userId,
+            },
+            headers: {
+                'Authorization': "Bearer " + store.state.user.access,
+            },
+            success(resp) {
+                user.id = resp.id;
+                user.name = resp.username;
+                user.photo = resp.photo;
+                user.followerCount = resp.followerCount;
+                user.is_followed = resp.is_followed;
+            }
         });
 
-        const posts = reactive({
-            count: 3,
-            posts: [
-                {
-                    id: 1,
-                    userid: 1,
-                    content: "今天吃了瓦香鸡，开心",
-                },
-                {
-                    id: 1,
-                    userid: 1,
-                    content: "明天吃什么呢，开心",
-                },
-                {
-                    id: 1,
-                    userid: 1,
-                    content: "今天还锻炼了，开心",
-                },
-            ]
+        $.ajax({
+            url: "https://app165.acapp.acwing.com.cn/myspace/post/",
+            type: "GET",
+            data: {
+                user_id: userId,
+            },
+            headers: {
+                'Authorization': "Bearer " + store.state.user.access,
+            },
+            success(resp) {
+                posts.count = resp.length;
+                posts.posts = resp;
+            }
         });
 
 
@@ -86,7 +96,7 @@ export default {
                 userid: 1,
                 content: content,
             })
-        }
+        };
 
         return {
             user,

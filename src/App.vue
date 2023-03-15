@@ -1,7 +1,7 @@
 <template>
   <NavBar />
   <MouseTrace></MouseTrace>
-  <router-view />
+  <router-view :key="$router.fullPath" />
 </template>
 
 <script>
