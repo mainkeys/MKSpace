@@ -16,7 +16,8 @@
                         <router-link :to="{ name: 'userlist' }" class="nav-link" href="/userlist">好友列表</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link :to="{ name: 'userprofile' }" class="nav-link" href="/userprofile">用户动态</router-link>
+                        <router-link :to="{ name: 'userprofile', params: { userId: 2 } }" class="nav-link"
+                            href="/userprofile">用户动态</router-link>
                     </li>
                 </ul>
                 <ul class="navbar-nav" style="color:  rgb(162, 207, 245);">

@@ -1,7 +1,6 @@
 <template>
   <ContentBase>
     首页
-
   </ContentBase>
 </template>
 

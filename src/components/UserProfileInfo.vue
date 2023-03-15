@@ -17,7 +17,7 @@
                 <span>88.7w</span><span class="gray-text"> likes</span>
 
             </div>
-            <button class="btn-box" @click="follow" v-if="!user.is_followed">+ Follow</button>
+            <button class="btn-box" @click="follow" v-if="!user.is_followed">Follow</button>
             <button class="btn-box" @click="unfollow" v-if="user.is_followed">Unfollow</button>
         </div>
     </div>
@@ -85,7 +85,7 @@ export default {
     width: 22%;
     height: 11%;
     /* position: relative; */
-    background-color: #f2f7de;
+    background-color: #f6f8ec;
     border-color: lightgray;
     border-radius: 5px;
     border: #6D757A solid 1px;

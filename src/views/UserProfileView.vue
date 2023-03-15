@@ -19,6 +19,7 @@ import UserProfilePosts from '../components/UserProfilePosts';
 import UserProfileWrite from '../components/UserProfileWrite'
 
 import { reactive } from 'vue'
+import { useRoute } from 'vue-router'
 // @ is an alias to /src
 
 export default {
@@ -31,6 +32,10 @@ export default {
     },
     // ref比reactive慢， ref能赋值
     setup() {
+        const route = useRoute();
+        console.log(route.params.userId);
+
+
         const user = reactive({
             id: 1,
             userName: "Mainkeys",
@@ -89,6 +94,7 @@ export default {
             unfollow,
             posts,
             submmit_a_post,
+            // userId,
         };
     }
 
