@@ -9,9 +9,9 @@
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">密码</label>
-                        <input v-model="password" type="password" class="form-control" id="exampleInputPassword1">
+                        <input v-model="password" type="password" class="form-control" id="password">
                     </div>
-                    <div class="error-msg">{{ error_message }}</div>
+                    <div class="error_message">{{ error_message }}</div>
                     <button type="submit" class="btn btn-primary">登录</button>
                 </form>
             </div>
@@ -24,6 +24,7 @@
 import ContentBase from '../components/ContentBase'
 import { ref } from 'vue';
 import { useStore } from 'vuex'
+import router from '@/router/index';
 // @ is an alias to /src
 
 export default {
@@ -38,14 +39,15 @@ export default {
         let error_message = ref('');
 
         const login = () => {
+            error_message.value = "";
             store.dispatch("login", {
                 username: username.value,
                 password: password.value,
                 success() {
-                    console.log("succese");
+                    router.push({ name: 'userlist' });
                 },
                 error() {
-                    console.log("failed");
+                    error_message.value = "用户名或密码错误";
                 }
             });
         };
@@ -66,7 +68,7 @@ button {
     width: 40%;
 }
 
-.error-msg {
+.error_message {
     color: red;
 }
 </style>
